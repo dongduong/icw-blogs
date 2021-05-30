@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.icw.gateway",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "gateway",
+    "baseName": "icwgateway",
+    "packageName": "com.icw.gateway",
+    "packageFolder": "com/icw/gateway",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZjA4ZTc0NjFhYzNiMGRkYjA1ZWZkZWQ4YjkyYzQzM2M5MjBlMWQ3MTcwMjE1MGFjMDE5OGZlNGMyYTk1NzM5YjJlMTk2MjIyOGY5ZTM2ODVkMzM5ZDY0YWQ4OWExODRiZDMwNGFkZWY5MDQ0M2E5NzY3NzkyOWNlMzU3ZDk0YTg=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "react",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1622393108501,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "zh-cn", "zh-tw"],
+    "blueprints": []
+  }
+}

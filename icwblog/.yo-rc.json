@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.icw.blog",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "microservice",
+    "baseName": "icwblog",
+    "packageName": "com.icw.blog",
+    "packageFolder": "com/icw/blog",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZWFiN2ZkOWNlNzczNTk1NzE1MWU2YzljMGM2MDA5YjM3NTljYTUzODBiYzcxYjkwNTkxMGEyYzQ1MzgxM2UxODk2OWViZDkwOGRlNmY2NmNjNjA5MDBkOGJkYjFkYjI5OTlmNDU2MThmMmVmYTAxMTM3OTAzOWFlYjNiOGQwM2Q=",
+    "embeddableLaunchScript": false,
+    "creationTimestamp": 1622391230382,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": ["en", "zh-cn", "zh-tw"],
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

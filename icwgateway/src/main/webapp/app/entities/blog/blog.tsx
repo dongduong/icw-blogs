@@ -42,9 +42,9 @@ export const Blog = (props: IBlogProps) => {
                 <th>
                   <Translate contentKey="icwgatewayApp.blog.handle">Handle</Translate>
                 </th>
-                <th>
+                {/* <th>
                   <Translate contentKey="icwgatewayApp.blog.userId">User Id</Translate>
-                </th>
+                </th> */}
                 <th />
               </tr>
             </thead>
@@ -58,7 +58,7 @@ export const Blog = (props: IBlogProps) => {
                   </td>
                   <td>{blog.name}</td>
                   <td>{blog.handle}</td>
-                  <td>{blog.userId}</td>
+                  {/* <td>{blog.userId}</td> */}
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${blog.id}`} color="info" size="sm">

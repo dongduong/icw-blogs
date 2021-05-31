@@ -103,12 +103,12 @@ export const BlogUpdate = (props: IBlogUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              {/* <AvGroup>
                 <Label id="userIdLabel" for="blog-userId">
                   <Translate contentKey="icwgatewayApp.blog.userId">User Id</Translate>
                 </Label>
                 <AvField id="blog-userId" type="string" className="form-control" name="userId" />
-              </AvGroup>
+              </AvGroup> */}
               <Button tag={Link} id="cancel-save" to="/blog" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

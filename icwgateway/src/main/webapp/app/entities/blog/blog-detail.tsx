@@ -37,12 +37,12 @@ export const BlogDetail = (props: IBlogDetailProps) => {
             </span>
           </dt>
           <dd>{blogEntity.handle}</dd>
-          <dt>
+          {/* <dt>
             <span id="userId">
               <Translate contentKey="icwgatewayApp.blog.userId">User Id</Translate>
             </span>
           </dt>
-          <dd>{blogEntity.userId}</dd>
+          <dd>{blogEntity.userId}</dd> */}
         </dl>
         <Button tag={Link} to="/blog" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

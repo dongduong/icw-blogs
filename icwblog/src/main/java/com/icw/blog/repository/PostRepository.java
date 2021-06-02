@@ -29,5 +29,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Query("select distinct post from Post post where post.title like %?1%"
         + " or post.content like %?1%")
-    List<Post> searchWithEagerRelationships(@Param("keyword") String keyword);
+    Page<Post> searchWithEagerRelationships(Pageable pageable, @Param("keyword") String keyword);
 }

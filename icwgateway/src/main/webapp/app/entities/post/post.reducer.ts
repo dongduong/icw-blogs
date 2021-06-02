@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+  ICrudSearchAction,
   parseHeaderForLinks,
   loadMoreDataWhenScrolled,
   ICrudGetAction,
@@ -14,6 +15,7 @@ import { REQUEST, SUCCESS, FAILURE } from 'app/shared/reducers/action-type.util'
 import { IPost, defaultValue } from 'app/shared/model/post.model';
 
 export const ACTION_TYPES = {
+  SEARCH_POSTS: 'post/SEARCH_POSTS',
   FETCH_POST_LIST: 'post/FETCH_POST_LIST',
   FETCH_POST: 'post/FETCH_POST',
   CREATE_POST: 'post/CREATE_POST',
@@ -40,6 +42,7 @@ export type PostState = Readonly<typeof initialState>;
 
 export default (state: PostState = initialState, action): PostState => {
   switch (action.type) {
+    case REQUEST(ACTION_TYPES.SEARCH_POSTS):
     case REQUEST(ACTION_TYPES.FETCH_POST_LIST):
     case REQUEST(ACTION_TYPES.FETCH_POST):
       return {
@@ -57,6 +60,7 @@ export default (state: PostState = initialState, action): PostState => {
         updateSuccess: false,
         updating: true,
       };
+    case FAILURE(ACTION_TYPES.SEARCH_POSTS):
     case FAILURE(ACTION_TYPES.FETCH_POST_LIST):
     case FAILURE(ACTION_TYPES.FETCH_POST):
     case FAILURE(ACTION_TYPES.CREATE_POST):
@@ -69,6 +73,7 @@ export default (state: PostState = initialState, action): PostState => {
         updateSuccess: false,
         errorMessage: action.payload,
       };
+    case SUCCESS(ACTION_TYPES.SEARCH_POSTS):
     case SUCCESS(ACTION_TYPES.FETCH_POST_LIST): {
       const links = parseHeaderForLinks(action.payload.headers.link);
 
@@ -122,8 +127,14 @@ export default (state: PostState = initialState, action): PostState => {
 };
 
 const apiUrl = 'services/icwblog/api/posts';
+const apiSearchUrl = 'services/icwblog/api/posts/search';
 
 // Actions
+
+export const getSearchEntities: ICrudSearchAction<IPost> = (keyword, page, size, sort) => ({
+  type: ACTION_TYPES.SEARCH_POSTS,
+  payload: axios.get<IPost>(`${apiSearchUrl}?keyword=${keyword}${sort ? `&page=${page}&size=${size}&sort=${sort}` : ''}`),
+});
 
 export const getEntities: ICrudGetAllAction<IPost> = (page, size, sort) => {
   const requestUrl = `${apiUrl}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;

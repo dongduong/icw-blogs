@@ -5,6 +5,7 @@
         "title": "Posts",
         "createLabel": "Create a new Post",
         "createOrEditLabel": "Create or edit a Post",
+        "search": "Search for Post",
         "notFound": "No Posts found"
       },
       "created": "A new Post is created with identifier {{ param }}",
@@ -29,6 +30,7 @@
         "title": "Posts",
         "createLabel": "Create a new Post",
         "createOrEditLabel": "Create or edit a Post",
+        "search": "Search for Post",
         "notFound": "No Posts found"
       },
       "created": "A new Post is created with identifier {{ param }}",

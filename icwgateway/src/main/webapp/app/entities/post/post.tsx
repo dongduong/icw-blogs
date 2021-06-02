@@ -2,12 +2,22 @@ import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Col, Row, Table } from 'reactstrap';
-import { byteSize, Translate, ICrudGetAllAction, TextFormat, getSortState, IPaginationBaseState } from 'react-jhipster';
+import { Button, InputGroup, Col, Row, Table } from 'reactstrap';
+import { AvForm, AvGroup, AvInput } from 'availity-reactstrap-validation';
+import {
+  byteSize,
+  Translate,
+  translate,
+  ICrudSearchAction,
+  ICrudGetAllAction,
+  TextFormat,
+  getSortState,
+  IPaginationBaseState,
+} from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
-import { getEntities, reset } from './post.reducer';
+import { getSearchEntities, getEntities, reset } from './post.reducer';
 import { IPost } from 'app/shared/model/post.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
@@ -16,13 +26,23 @@ import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-u
 export interface IPostProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const Post = (props: IPostProps) => {
+  const [search, setSearch] = useState('');
   const [paginationState, setPaginationState] = useState(
     overridePaginationStateWithQueryParams(getSortState(props.location, ITEMS_PER_PAGE), props.location.search)
   );
   const [sorting, setSorting] = useState(false);
 
   const getAllEntities = () => {
-    props.getEntities(paginationState.activePage - 1, paginationState.itemsPerPage, `${paginationState.sort},${paginationState.order}`);
+    if (search) {
+      props.getSearchEntities(
+        search,
+        paginationState.activePage - 1,
+        paginationState.itemsPerPage,
+        `${paginationState.sort},${paginationState.order}`
+      );
+    } else {
+      props.getEntities(paginationState.activePage - 1, paginationState.itemsPerPage, `${paginationState.sort},${paginationState.order}`);
+    }
   };
 
   const resetAll = () => {
@@ -37,6 +57,34 @@ export const Post = (props: IPostProps) => {
   useEffect(() => {
     resetAll();
   }, []);
+
+  const startSearching = () => {
+    if (search) {
+      props.reset();
+      setPaginationState({
+        ...paginationState,
+        activePage: 1,
+      });
+      props.getSearchEntities(
+        search,
+        paginationState.activePage - 1,
+        paginationState.itemsPerPage,
+        `${paginationState.sort},${paginationState.order}`
+      );
+    }
+  };
+
+  const clear = () => {
+    props.reset();
+    setSearch('');
+    setPaginationState({
+      ...paginationState,
+      activePage: 1,
+    });
+    props.getEntities();
+  };
+
+  const handleSearch = event => setSearch(event.target.value);
 
   useEffect(() => {
     if (props.updateSuccess) {
@@ -62,7 +110,7 @@ export const Post = (props: IPostProps) => {
       getAllEntities();
       setSorting(false);
     }
-  }, [sorting]);
+  }, [sorting, search]);
 
   const sort = p => () => {
     props.reset();
@@ -86,6 +134,29 @@ export const Post = (props: IPostProps) => {
           <Translate contentKey="icwgatewayApp.post.home.createLabel">Create new Post</Translate>
         </Link>
       </h2>
+      <Row>
+        <Col sm="12">
+          <AvForm onSubmit={startSearching}>
+            <AvGroup>
+              <InputGroup>
+                <AvInput
+                  type="text"
+                  name="search"
+                  value={search}
+                  onChange={handleSearch}
+                  placeholder={translate('icwgatewayApp.post.home.search')}
+                />
+                <Button className="input-group-addon">
+                  <FontAwesomeIcon icon="search" />
+                </Button>
+                <Button type="reset" className="input-group-addon" onClick={clear}>
+                  <FontAwesomeIcon icon="trash" />
+                </Button>
+              </InputGroup>
+            </AvGroup>
+          </AvForm>
+        </Col>
+      </Row>
       <div className="table-responsive">
         <InfiniteScroll
           pageStart={paginationState.activePage}
@@ -178,6 +249,7 @@ const mapStateToProps = ({ post }: IRootState) => ({
 });
 
 const mapDispatchToProps = {
+  getSearchEntities,
   getEntities,
   reset,
 };

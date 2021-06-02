@@ -139,9 +139,11 @@ public class PostResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of posts in body.
      */
     @GetMapping("/posts/search")
-    public ResponseEntity<List<Post>> searchPost(@RequestParam String keyword) {
+    public ResponseEntity<List<Post>> searchPost(Pageable pageable, @RequestParam String keyword) {
         log.debug("REST request to search Posts by keyword : {}", keyword);
-        List<Post> posts = postRepository.searchWithEagerRelationships(keyword);
-        return ResponseEntity.ok().body(posts);
+        Page<Post> page;
+        page = postRepository.searchWithEagerRelationships(pageable, keyword);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 }

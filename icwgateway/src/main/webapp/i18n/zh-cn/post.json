@@ -5,6 +5,7 @@
         "title": "Posts",
         "createLabel": "创建新 Post",
         "createOrEditLabel": "创建或编辑 Post",
+        "search": "查找 Post",
         "notFound": "No Posts found"
       },
       "created": "Post {{ param }} 创建成功",
@@ -29,6 +30,7 @@
         "title": "Posts",
         "createLabel": "创建新 Post",
         "createOrEditLabel": "创建或编辑 Post",
+        "search": "查找 Post",
         "notFound": "No Posts found"
       },
       "created": "Post {{ param }} 创建成功",

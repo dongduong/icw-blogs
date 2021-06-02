@@ -131,4 +131,17 @@ public class PostResource {
         postRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+
+    /**
+     * {@code GET  /posts/search} : search post from keywork
+     *
+     * @param keyword search keyword
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of posts in body.
+     */
+    @GetMapping("/posts/search")
+    public ResponseEntity<List<Post>> searchPost(@RequestParam String keyword) {
+        log.debug("REST request to search Posts by keyword : {}", keyword);
+        List<Post> posts = postRepository.searchWithEagerRelationships(keyword);
+        return ResponseEntity.ok().body(posts);
+    }
 }

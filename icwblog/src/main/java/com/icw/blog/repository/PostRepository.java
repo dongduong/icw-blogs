@@ -26,4 +26,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Query("select post from Post post left join fetch post.tags where post.id =:id")
     Optional<Post> findOneWithEagerRelationships(@Param("id") Long id);
+
+    @Query("select distinct post from Post post where post.title like %?1%"
+        + " or post.content like %?1%")
+    List<Post> searchWithEagerRelationships(@Param("keyword") String keyword);
 }

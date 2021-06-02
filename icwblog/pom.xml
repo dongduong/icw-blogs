@@ -552,6 +552,8 @@
                                 <goal>prepare-agent</goal>
                             </goals>
                             <configuration>
+                                <!-- Exclude any class named Application from instrumentation -->
+                                <excludes>**/Application.*</excludes>
                                 <!-- Sets the path to the file which contains the execution data. -->
                                 <destFile>${jacoco.utReportFile}</destFile>
                             </configuration>
@@ -564,6 +566,8 @@
                                 <goal>report</goal>
                             </goals>
                             <configuration>
+                                <!-- Exclude any class named Application from reporting-->
+                                <excludes>**/Application.*</excludes>
                                 <dataFile>${jacoco.utReportFile}</dataFile>
                                 <outputDirectory>${jacoco.utReportFolder}</outputDirectory>
                             </configuration>
@@ -574,6 +578,8 @@
                                 <goal>prepare-agent-integration</goal>
                             </goals>
                             <configuration>
+                                <!-- Exclude any class named Application from instrumentation -->
+                                <excludes>**/Application.*</excludes>
                                 <!-- Sets the path to the file which contains the execution data. -->
                                 <destFile>${jacoco.itReportFile}</destFile>
                             </configuration>
@@ -586,6 +592,8 @@
                                 <goal>report-integration</goal>
                             </goals>
                             <configuration>
+                                <!-- Exclude any class named Application from reporting-->
+                                <excludes>**/Application.*</excludes>
                                 <dataFile>${jacoco.itReportFile}</dataFile>
                                 <outputDirectory>${jacoco.itReportFolder}</outputDirectory>
                             </configuration>

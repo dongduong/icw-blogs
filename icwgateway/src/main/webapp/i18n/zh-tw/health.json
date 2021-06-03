@@ -18,6 +18,7 @@
       "diskSpace": "硬碟空間",
       "mail": "電子郵件",
       "ping": "應用程式",
+      "elasticsearch": "Elasticsearch",
       "db": "資料庫"
     },
     "table": {

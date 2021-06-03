@@ -9,7 +9,7 @@ const Footer = props => (
     <Row>
       <Col md="12">
         <p>
-          <Translate contentKey="footer">Your footer</Translate>
+          2014 - 2021 © International Compliance Workshop.
         </p>
       </Col>
     </Row>

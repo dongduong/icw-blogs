@@ -553,7 +553,10 @@
                             </goals>
                             <configuration>
                                 <!-- Exclude any class named Application from instrumentation -->
-                                <excludes>**/Application.*</excludes>
+                                <excludes>
+                                    <exclude>**/Application.*</exclude>
+                                    <exclude>com/icw/blog/web/rest/**</exclude>
+                                </excludes>
                                 <!-- Sets the path to the file which contains the execution data. -->
                                 <destFile>${jacoco.utReportFile}</destFile>
                             </configuration>
@@ -567,7 +570,10 @@
                             </goals>
                             <configuration>
                                 <!-- Exclude any class named Application from reporting-->
-                                <excludes>**/Application.*</excludes>
+                                <excludes>
+                                    <exclude>**/Application.*</exclude>
+                                    <exclude>com/icw/blog/web/rest/**</exclude>
+                                </excludes>
                                 <dataFile>${jacoco.utReportFile}</dataFile>
                                 <outputDirectory>${jacoco.utReportFolder}</outputDirectory>
                             </configuration>
@@ -579,7 +585,11 @@
                             </goals>
                             <configuration>
                                 <!-- Exclude any class named Application from instrumentation -->
-                                <excludes>**/Application.*</excludes>
+                                <excludes>
+                                    <exclude>**/Application.*</exclude>
+                                    <exclude>com/icw/blog/security/**</exclude>
+                                    <exclude>com/icw/blog/domain/**</exclude>
+                                </excludes>
                                 <!-- Sets the path to the file which contains the execution data. -->
                                 <destFile>${jacoco.itReportFile}</destFile>
                             </configuration>
@@ -593,7 +603,11 @@
                             </goals>
                             <configuration>
                                 <!-- Exclude any class named Application from reporting-->
-                                <excludes>**/Application.*</excludes>
+                                <excludes>
+                                    <exclude>**/Application.*</exclude>
+                                    <exclude>com/icw/blog/security/**</exclude>
+                                    <exclude>com/icw/blog/domain/**</exclude>
+                                </excludes>
                                 <dataFile>${jacoco.itReportFile}</dataFile>
                                 <outputDirectory>${jacoco.itReportFolder}</outputDirectory>
                             </configuration>

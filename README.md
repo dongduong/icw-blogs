@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/dongduong/icw-blogs.svg?branch=ci-jacoco)](https://travis-ci.org/dongduong/icw-blogs)
 ![Coverage](.github/badges/jacoco.svg)
 
 # ICW Blogs

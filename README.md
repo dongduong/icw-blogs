@@ -1,3 +1,6 @@
+![Build Status](https://github.com/dongduong/icw-blogs/actions/workflows/build.yml/badge.svg)
+![Coverage](.github/badges/jacoco.svg)
+
 # ICW Blogs
 
 ## Development

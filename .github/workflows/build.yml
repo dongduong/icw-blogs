@@ -83,8 +83,8 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           #aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
           use_existing_version_if_available: false
-          application_name: test-deploy-wba
-          environment_name: Testdeploywba-env
+          application_name: test-deploy-wba2
+          environment_name: Testdeploywba2-env
           version_label: ${{github.SHA}}
           region: ap-southeast-1
           deployment_package: icwblog-0.0.1-SNAPSHOT.jar

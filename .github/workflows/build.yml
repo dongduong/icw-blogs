@@ -54,7 +54,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B package -DskipTests --file pom.xml
         working-directory: icwblog
-      - name: Upload WAR package
+      - name: Upload JAR package
         #This uploads artifacts from your workflow allowing you to share data between jobs and store data once a workflow is complete.
         uses: actions/upload-artifact@v2
         with:
@@ -62,3 +62,29 @@ jobs:
           name: icwblog
           #From this path
           path: icwblog/target/icwblog-0.0.1-SNAPSHOT.jar
+  #Deploy's job
+  deploy:
+    #Depends on build's job
+    needs: build
+    name: Deploy
+    #Run on Ubuntu using the latest version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download JAR
+        #Download the artifact which was uploaded in the build's job
+        uses: actions/download-artifact@v2
+        with:
+          name: icwblog
+      #Deploy the artifact (JAR) into AWS Beanstalk
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v13
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          #aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
+          use_existing_version_if_available: false
+          application_name: test-deploy-wba
+          environment_name: Testdeploywba-env
+          version_label: ${{github.SHA}}
+          region: ap-southeast-1
+          deployment_package: icwblog-0.0.1-SNAPSHOT.jar

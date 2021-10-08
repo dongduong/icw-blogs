@@ -59,6 +59,6 @@ jobs:
         with:
           local: 'icwblog/target/icwblog-0.0.1-SNAPSHOT.jar'
           remote: ${{secrets.SSH_TARGET}}
-          host: ${{secrets.SERVER_IP_ADDRESS}}
-          user: ${{secrets.SERVER_USERNAME}}
-          password: ${{secrets.SERVER_PASSWORD}}
+          host: ${{secrets.SSH_HOST}}
+          user: ${{secrets.SSH_USER}}
+          password: ${{secrets.SSH_PASS}}

@@ -57,11 +57,8 @@ jobs:
       - name: ssh-scp-deploy
         uses: marcodallasanta/ssh-scp-deploy@v1.1.0
         with:
-          local: 'icwblog/target/icwblog-0.0.1-SNAPSHOT.jar'           # Local file path - REQUIRED false - DEFAULT ./
-          remote: '~/'                                                 # Remote file path - REQUIRED false - DEFAULT ~/
-          host: ${{secrets.SERVER_IP_ADDRESS}}                                      # Remote server address - REQUIRED true                                  # Remote server port - REQUIRED false - DEFAULT 22
-          user: ${{secrets.SERVER_USERNAME}}                                      # Remote server user - REQUIRED true
-          password: ${{secrets.SERVER_PASSWORD}}                              # User password - REQUIRED at least one of "password" or "key" 
-          #key: ${{secrets.SERVER_SSH_KEY}}                                        # Remote server private key - REQUIRED at least one of "password" or "key" 
-          pre_upload: echo "This will be executed before the upload!"  # Command to run via ssh before scp upload - REQUIRED false
-          post_upload: echo "This will be executed after the upload!"  # Command to run via ssh after scp upload - REQUIRED false
+          local: 'icwblog/target/icwblog-0.0.1-SNAPSHOT.jar'
+          remote: ${{secrets.SSH_TARGET}}
+          host: ${{secrets.SERVER_IP_ADDRESS}}
+          user: ${{secrets.SERVER_USERNAME}}
+          password: ${{secrets.SERVER_PASSWORD}}
